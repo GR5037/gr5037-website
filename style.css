@@ -71,7 +71,7 @@ nav {
 /* Hero Image */
 .hero-image {
     height: 600px;
-    background-image: url("images/bhero_image.jpg");
+    background-image: url("images/hero_image.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -284,6 +284,8 @@ nav {
 
 
 
+
+
 /* =========================
    Team Roster Page
 ========================= */
@@ -327,17 +329,17 @@ nav {
     color: #555;
 }
 
-/* Mentors and coaches */
+/* Student and mentor grids */
 
-
+.student-grid,
 .mentor-grid {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
-
 
 /* Individual person cards */
 
@@ -351,14 +353,23 @@ nav {
     text-align: center;
 }
 
+/* Square person photos */
+
+.person-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
 
 .person-photo img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
+/* Person information */
 
 .person-info {
     padding: 25px 20px;
@@ -414,12 +425,6 @@ nav {
     text-align: left;
 }
 
-.student-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-}
-
 /* Multiple roles per student */
 
 .person-roles {
@@ -441,6 +446,21 @@ nav {
     line-height: 1.4;
 }
 
+.person-years {
+    margin: 0 0 15px;
+    color: #777;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Divider between students and mentors */
+
+.roster-divider {
+    width: 100%;
+    height: 4px;
+    background-color: #A4C639;
+}
+
 /* Responsive layout */
 
 @media (max-width: 900px) {
@@ -457,6 +477,7 @@ nav {
         padding: 50px 20px;
     }
 
+    .student-grid,
     .mentor-grid {
         grid-template-columns: 1fr;
     }
@@ -467,24 +488,10 @@ nav {
 }
 
 @media (max-width: 600px) {
-    .student-grid,
-    .mentor-grid {
-        grid-template-columns: 1fr;
-    }
-
     .grade-heading {
         font-size: 24px;
     }
 }
-
-
-.roster-divider {
-    width: 100%;
-    height: 4px;
-    background-color: #A4C639;
-}
-
-
 
 /* =========================
    About Page
@@ -743,6 +750,362 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+
+/* =========================
+   Robots Page
+========================= */
+
+.robots-page {
+    padding: 70px 40px;
+    background-color: #F1F2F6;
+}
+
+.robot-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   Timeline Introduction
+========================= */
+
+.robot-timeline-intro {
+    max-width: 750px;
+    margin: 80px auto 70px;
+    text-align: center;
+}
+
+.robot-timeline-intro h2 {
+    margin: 0 0 15px;
+    font-size: 36px;
+    color: #222;
+}
+
+.robot-timeline-intro p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* =========================
+   Timeline Structure
+========================= */
+
+.timeline {
+    position: relative;
+    padding: 10px 0;
+}
+
+/* Center Timeline Line */
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+    background-color: #43A047;
+    border-radius: 4px;
+}
+
+/* Individual Timeline Entries */
+
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 65px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline Dots */
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    transform: translateX(-50%);
+    background-color: #43A047;
+    border: 5px solid #F1F2F6;
+    border-radius: 50%;
+    box-sizing: content-box;
+    z-index: 2;
+}
+
+
+/* =========================
+   Robot Cards
+========================= */
+
+.timeline-content {
+    position: relative;
+    width: 84%;
+    max-width: 460px;
+    overflow: visible;
+    background-color: #FFFFFF;
+    border: 2px solid #43A047;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Odd Entries: Card on the LEFT */
+
+.timeline-item:nth-child(odd) .timeline-content {
+    grid-column: 1;
+    justify-self: end;
+    margin-right: 15px;
+}
+
+/* Even Entries: Card on the RIGHT */
+
+.timeline-item:nth-child(even) .timeline-content {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: 15px;
+}
+
+/* Horizontal Connectors */
+
+.timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 43px;
+    width: 30px;
+    height: 3px;
+    background-color: #43A047;
+    z-index: 1;
+}
+
+/* Left-side Cards: Connector Points Toward Center */
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -32px;
+}
+
+/* Right-side Cards: Connector Points Toward Center */
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -32px;
+}
+
+/* Card Hover Effect */
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Keep Images Inside the Rounded Card */
+
+.robot-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #E8F5E9;
+    border-radius: 11px 11px 0 0;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 768px) {
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .timeline-content::before {
+        display: none;
+    }
+}
+
+
+/* =========================
+   Robot Images
+========================= */
+
+.robot-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #E8F5E9;
+}
+
+.robot-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover .robot-image img {
+    transform: scale(1.03);
+}
+
+/* =========================
+   Robot Information
+========================= */
+
+.robot-info {
+    padding: 25px 28px 30px;
+}
+
+.robot-season {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.robot-info h3 {
+    margin: 0 0 12px;
+    color: #222;
+    font-size: 25px;
+}
+
+.robot-info p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* =========================
+   Robot Timeline Years
+========================= */
+
+/* The year occupies the half opposite the robot card. */
+
+.timeline-year {
+    position: absolute;
+    top: 35px;
+    width: calc(50% - 25px);
+    color: #2E7D32;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+/* Odd entries: card on the LEFT, year on the RIGHT */
+
+.timeline-item:nth-child(odd) .timeline-year {
+    left: calc(50% + 25px);
+    text-align: left;
+}
+
+/* Even entries: card on the RIGHT, year on the LEFT */
+
+.timeline-item:nth-child(even) .timeline-year {
+    right: calc(50% + 25px);
+    text-align: right;
+}
+
+/* =========================
+   Responsive Layout
+========================= */
+
+@media (max-width: 768px) {
+
+    .robots-page {
+        padding: 50px 20px;
+    }
+
+    .robot-timeline-intro {
+        margin-bottom: 45px;
+    }
+
+    .robot-timeline-intro h2 {
+        font-size: 30px;
+    }
+
+    /* Move Timeline Line to the Left */
+
+    .timeline::before {
+        left: 12px;
+    }
+
+    .timeline-item {
+        display: block;
+        margin-bottom: 40px;
+        padding-left: 38px;
+    }
+
+    .timeline-item::before {
+        top: 25px;
+        left: 12px;
+    }
+
+    /* Stack All Robot Cards */
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    /* Place Years Above Cards */
+
+    .timeline-year,
+    .timeline-item:nth-child(odd) .timeline-year,
+    .timeline-item:nth-child(even) .timeline-year {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        width: auto;
+        margin-bottom: 10px;
+        text-align: left;
+        white-space: normal;
+        font-size: 16px;
+    }
+
+    .robot-info {
+        padding: 22px;
+    }
+
+    .robot-info h3 {
+        font-size: 23px;
+    }
+}
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .timeline-content,
+    .robot-image img {
+        transition: none;
+    }
+}
 
 
 /* =========================
@@ -826,6 +1189,706 @@ nav {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 0;
+}
+
+
+/* =========================
+   Learning Center Page
+========================= */
+
+.guides-page {
+    background-color: #F1F2F6;
+}
+
+.guides-intro {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 70px 40px;
+    text-align: center;
+}
+
+.guides-intro h2,
+.guides-section-intro h2 {
+    margin: 0 0 20px;
+    color: #2E7D32;
+    font-size: 32px;
+}
+
+.guides-intro p {
+    margin: 0 0 15px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.guides-section {
+    padding: 70px 40px;
+}
+
+.guides-section-alt {
+    background-color: #E8E9F0;
+}
+
+.guides-section-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.guides-section-intro p {
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Topic Categories */
+
+.guide-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.guide-category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px;
+    background-color: #FFFFFF;
+    border-top: 4px solid #43A047;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.guide-category-number {
+    margin-bottom: 18px;
+    color: #43A047;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.guide-category h3 {
+    margin: 0 0 12px;
+    color: #2E7D32;
+    font-size: 21px;
+}
+
+.guide-category p {
+    margin: 0 0 20px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.guide-category-link {
+    margin-top: auto;
+    color: #2E7D32;
+    font-weight: 700;
+}
+
+/* Tutorial Cards */
+
+.guide-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.guide-card {
+    overflow: hidden;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.guide-card-image {
+    display: flex;
+    align-items: flex-end;
+    min-height: 210px;
+    padding: 22px;
+    background: linear-gradient(135deg, #2E7D32, #81C784);
+}
+
+.guide-card-image span {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 6px;
+    color: #2E7D32;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Placeholder backgrounds until tutorial images are added */
+
+.guide-image-soldering {
+    background: linear-gradient(135deg, #37474F, #78909C);
+}
+
+.guide-image-crimping {
+    background: linear-gradient(135deg, #455A64, #80CBC4);
+}
+
+.guide-image-multimeter {
+    background: linear-gradient(135deg, #263238, #4CAF50);
+}
+
+.guide-card-content {
+    padding: 25px;
+}
+
+.guide-level {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background-color: #E8F5E9;
+    border-radius: 20px;
+    color: #2E7D32;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.guide-card-content h3 {
+    margin: 0 0 12px;
+    color: #2E7D32;
+    font-size: 23px;
+}
+
+.guide-card-content p {
+    margin: 0 0 20px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.guide-read-more {
+    color: #2E7D32;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.guide-read-more:hover {
+    text-decoration: underline;
+}
+
+/* More Topics */
+
+.guides-coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.guides-coming-soon {
+    padding: 28px;
+    background-color: #FFFFFF;
+    border-left: 4px solid #43A047;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.guides-coming-soon h3 {
+    margin: 0 0 12px;
+    color: #2E7D32;
+    font-size: 21px;
+}
+
+.guides-coming-soon p {
+    margin: 0;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Responsive Layout */
+
+@media (max-width: 1000px) {
+    .guide-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .guide-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .guides-coming-soon-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .guides-intro,
+    .guides-section {
+        padding: 50px 20px;
+    }
+
+    .guides-intro h2,
+    .guides-section-intro h2 {
+        font-size: 27px;
+    }
+
+    .guide-category-grid,
+    .guide-card-grid,
+    .guides-coming-soon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-category,
+    .guides-coming-soon {
+        padding: 23px;
+    }
+
+    .guide-card-image {
+        min-height: 180px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .guide-category,
+    .guide-card {
+        transition: none;
+    }
+
+    .guide-category:hover,
+    .guide-card:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================
+   Individual Learning Guide
+========================= */
+
+.learning-guide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 40px 70px;
+    color: #333333;
+    line-height: 1.8;
+}
+
+/* Back to Learning Center */
+
+.guide-breadcrumb {
+    margin-bottom: 25px;
+}
+
+.guide-breadcrumb a {
+    color: #2E7D32;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.guide-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Introduction */
+
+.learning-guide-intro {
+    padding: 35px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.learning-guide-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.learning-guide-meta .guide-level {
+    margin-bottom: 0;
+}
+
+.guide-meta-item {
+    color: #666666;
+    font-size: 14px;
+}
+
+.learning-guide-intro h2,
+.learning-guide-section h2,
+.learning-guide-conclusion h2,
+.learning-guide-related h2 {
+    margin: 0 0 20px;
+    color: #2E7D32;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.learning-guide-intro p {
+    margin: 0 0 15px;
+}
+
+.learning-guide-intro p:last-child {
+    margin-bottom: 0;
+}
+
+/* General Guide Sections */
+
+.learning-guide-section {
+    padding: 35px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.learning-guide-alt {
+    background-color: #E8E9F0;
+    box-shadow: none;
+}
+
+.learning-guide-section p {
+    margin: 0 0 18px;
+}
+
+.learning-guide-section ul {
+    padding-left: 25px;
+}
+
+.learning-guide-section li {
+    margin-bottom: 10px;
+}
+
+/* Objectives and Materials */
+
+.guide-objectives li::marker,
+.guide-materials li::marker {
+    color: #43A047;
+}
+
+/* Safety Notice */
+
+.guide-safety {
+    padding: 25px;
+    background-color: #FFF8E1;
+    border-left: 5px solid #F9A825;
+    border-radius: 8px;
+}
+
+.guide-safety h3 {
+    margin: 0 0 10px;
+    color: #7A5200;
+    font-size: 21px;
+}
+
+.guide-safety p {
+    margin-bottom: 0;
+}
+
+/* Step-by-Step Instructions */
+
+.learning-guide-steps {
+    background-color: transparent;
+    padding: 10px 0;
+    box-shadow: none;
+}
+
+.learning-guide-steps > h2,
+.learning-guide-steps > p {
+    text-align: center;
+}
+
+.learning-guide-steps > p {
+    max-width: 750px;
+    margin: 0 auto 35px;
+}
+
+.learning-guide-step {
+    display: grid;
+    grid-template-columns: 65px minmax(0, 1fr);
+    gap: 25px;
+    margin-bottom: 25px;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.guide-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background-color: #E8F5E9;
+    border: 2px solid #43A047;
+    border-radius: 50%;
+    color: #2E7D32;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.guide-step-content {
+    min-width: 0;
+}
+
+.guide-step-content h3 {
+    margin: 5px 0 15px;
+    color: #2E7D32;
+    font-size: 23px;
+    line-height: 1.4;
+}
+
+.guide-step-content p {
+    margin: 0 0 20px;
+}
+
+.guide-step-image {
+    margin: 25px 0 0;
+}
+
+.guide-step-image img {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    background-color: #F1F2F6;
+    border-radius: 10px;
+}
+
+.guide-step-image figcaption {
+    margin-top: 10px;
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Common Mistakes */
+
+.guide-mistakes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.guide-mistake {
+    padding: 25px;
+    background-color: #FFFFFF;
+    border-left: 4px solid #43A047;
+    border-radius: 8px;
+}
+
+.guide-mistake h3 {
+    margin: 0 0 10px;
+    color: #2E7D32;
+    font-size: 20px;
+}
+
+.guide-mistake p {
+    margin-bottom: 0;
+}
+
+/* Final Checklist */
+
+.guide-checklist {
+    list-style: none;
+    padding-left: 0 !important;
+}
+
+.guide-checklist li {
+    position: relative;
+    padding-left: 32px;
+}
+
+.guide-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2E7D32;
+    font-weight: 800;
+}
+
+/* Conclusion */
+
+.learning-guide-conclusion {
+    padding: 35px;
+    margin-bottom: 40px;
+    background-color: #E8F5E9;
+    border-radius: 14px;
+    border-left: 5px solid #43A047;
+}
+
+.learning-guide-conclusion h2 {
+    margin: 0 0 15px;
+    color: #2E7D32;
+    font-size: 28px;
+}
+
+.learning-guide-conclusion p:last-child {
+    margin-bottom: 0;
+}
+
+/* Related Guides */
+
+.learning-guide-related {
+    margin-bottom: 40px;
+}
+
+.learning-guide-related > h2 {
+    text-align: center;
+}
+
+.guide-related-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.guide-related-links a {
+    display: block;
+    padding: 25px;
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-related-links a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.guide-related-links h3 {
+    margin: 0 0 10px;
+    color: #2E7D32;
+    font-size: 19px;
+}
+
+.guide-related-links p {
+    margin: 0;
+    color: #555555;
+    font-size: 14px;
+}
+
+/* Return Button */
+
+.guide-back-link {
+    text-align: center;
+}
+
+.guide-back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #2E7D32;
+    border: 2px solid #2E7D32;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.guide-back-button:hover {
+    background-color: #FFFFFF;
+    color: #2E7D32;
+}
+
+/* Responsive Layout */
+
+@media (max-width: 768px) {
+    .learning-guide {
+        padding: 25px 20px 50px;
+    }
+
+    .learning-guide-intro,
+    .learning-guide-section,
+    .learning-guide-conclusion {
+        padding: 25px;
+    }
+
+    .learning-guide-intro h2,
+    .learning-guide-section h2,
+    .learning-guide-conclusion h2,
+    .learning-guide-related h2 {
+        font-size: 26px;
+    }
+
+    .learning-guide-step {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 25px;
+    }
+
+    .guide-step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 17px;
+    }
+
+    .guide-step-content h3 {
+        font-size: 21px;
+    }
+
+    .guide-related-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .learning-guide {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .learning-guide-intro,
+    .learning-guide-section,
+    .learning-guide-conclusion {
+        padding: 20px;
+    }
+
+    .guide-mistakes-grid,
+    .guide-related-links {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-guide-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .learning-guide-step {
+        padding: 20px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .guide-related-links a {
+        transition: none;
+    }
+
+    .guide-related-links a:hover {
+        transform: none;
+    }
 }
 
 

@@ -60,7 +60,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #7CB342;
+    color: #2fff05;
 }
 
 
@@ -155,7 +155,7 @@ nav {
     margin: 0;
     padding: 60px 40px;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
     border-top: 4px solid #A4C639;
 }
 
@@ -305,7 +305,7 @@ nav {
 }
 
 .student-teams-section {
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
 }
 
 /* Section introductions */

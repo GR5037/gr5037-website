@@ -75,6 +75,8 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    border-bottom: 4px solid #A4C639
 }
 
 .hero-image img {
@@ -156,7 +158,8 @@ nav {
     padding: 60px 40px;
     text-align: center;
     background-color: #FFFFFF;
-    border-top: 4px solid #A4C639;
+    /* border-top: 4px solid #A4C639; */
+    border-top: none;
 }
 
 .stats-label {
